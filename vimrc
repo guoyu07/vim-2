@@ -9,7 +9,9 @@ syntax on
 set laststatus=2
 set t_Co=256
 color desert
-let g:fzf_mru_file_list_size = 3
+highlight VertSplit ctermfg=240 ctermbg=232 cterm=bold
+
 nnoremap <silent> <C-p> :FZF<cr>
 nnoremap <silent> <C-u> :FZFMru<cr>
 nnoremap <silent> <leader>e :NERDTreeToggle<cr>
+
