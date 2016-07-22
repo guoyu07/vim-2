@@ -13,13 +13,28 @@ Plug 'Townk/vim-autoclose'
 Plug 'majutsushi/tagbar'
 Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
 Plug 'vim-php/tagbar-phpctags.vim', { 'for': 'php' }
+Plug 'ap/vim-css-color'
+Plug 'othree/html5.vim'
+Plug 'othree/html5-syntax.vim'
+Plug 'groenewege/vim-less'
+Plug 'ternjs/tern_for_vim'
+Plug 'elzr/vim-json'
+Plug 'pangloss/vim-javascript'
+Plug 'othree/yajs.vim', { 'for': 'javascript' }
+Plug 'gavocanov/vim-js-indent'
+Plug 'mxw/vim-jsx'
+Plug 'tomtom/tcomment_vim'
 call plug#end() " }}}
 color molokai
 highlight Normal guibg=#000000 ctermbg=black " 纯黑背景，酷
+set encoding=utf8
 set laststatus=2
 set cursorline
 set hlsearch
 set colorcolumn=80
+set autoindent
+set smartindent
+set noswapfile
 " map
 nnoremap <silent> <C-p> :FZF<cr>
 nnoremap <silent> <C-u> :FZFMru<cr>
@@ -33,11 +48,12 @@ func! ExpandTab(len)
 	execute 'setlocal softtabstop='.a:len
 	execute 'setlocal tabstop='.a:len
 endfunc
-autocmd FileType html,css,scss,javascript call ExpandTab(2)
+autocmd FileType html,css,less,javascript call ExpandTab(2)
 autocmd FileType php,python,json,nginx call ExpandTab(4)
 autocmd FileType vim setlocal foldmethod=marker
 autocmd FileType php setlocal omnifunc=phpcd#CompletePHP
 autocmd FileType php setlocal iskeyword-=$
+autocmd FileType javascript nnoremap <C-]> :TernDef<cr>
 autocmd CompleteDone * pclose " 补全完成后自动关闭预览窗口
 " 将光标跳转到上次打开当前文件的位置 {{{
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
