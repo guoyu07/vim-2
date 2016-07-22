@@ -9,6 +9,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tomasr/molokai'
 call plug#end() " }}}
 color molokai
+highlight Normal guibg=#000000 ctermbg=black " 纯黑背景，酷
 set laststatus=2
 set cursorline
 set hlsearch
