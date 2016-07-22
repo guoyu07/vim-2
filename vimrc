@@ -1,7 +1,9 @@
 call plug#begin('~/.vim/plugged') " {{{
 Plug 'lvht/fzf-mru'|Plug 'junegunn/fzf'
 Plug 'scrooloose/nerdtree'
+Plug 'mileszs/ack.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'Shougo/neocomplete.vim'
 Plug 'phpvim/phpcd.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
@@ -13,10 +15,12 @@ highlight Normal guibg=#000000 ctermbg=black " 纯黑背景，酷
 set laststatus=2
 set cursorline
 set hlsearch
+set colorcolumn=80
 " map
 nnoremap <silent> <C-p> :FZF<cr>
 nnoremap <silent> <C-u> :FZFMru<cr>
 nnoremap <silent> <leader>e :NERDTreeToggle<cr>
+nnoremap <silent> <leader>f :NERDTreeFind<cr>
 " autocmd
 func! ExpandTab(len)
 	setlocal expandtab
@@ -28,6 +32,7 @@ autocmd FileType html,css,scss,javascript call ExpandTab(2)
 autocmd FileType php,python,json,nginx call ExpandTab(4)
 autocmd FileType vim setlocal foldmethod=marker
 autocmd FileType php setlocal omnifunc=phpcd#CompletePHP
+let g:ackprg = 'ag --vimgrep'
 " 将光标跳转到上次打开当前文件的位置 {{{
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
 			\ execute "normal! g`\"" |
@@ -75,8 +80,11 @@ function! s:ag_search(keyword)
 				\ })
 endfunction
 
-command! -nargs=* Ag call s:ag_search(<q-args>)
-command! Agc call s:ag_search(expand('<cword>'))
+command! -nargs=* FZFAg call s:ag_search(<q-args>)
+command! FZFAg call s:ag_search(expand('<cword>'))
 " }}}
-"
+
+let g:neocomplete#enable_at_startup = 1
+let g:fzf_mru_file_list_size = 100
+
 " vim: foldmethod=marker:noexpandtab:ts=2:sts=2:sw=2
