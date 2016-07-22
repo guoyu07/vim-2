@@ -6,21 +6,17 @@ Plug 'phpvim/phpcd.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'tomasr/molokai'
 call plug#end() " }}}
-" color {{{
+color molokai
 set laststatus=2
-set t_Co=256
-color desert
-highlight VertSplit ctermfg=240 ctermbg=232 cterm=bold
+set cursorline
 set hlsearch
-" }}}
-" keymap {{{
+" map
 nnoremap <silent> <C-p> :FZF<cr>
 nnoremap <silent> <C-u> :FZFMru<cr>
 nnoremap <silent> <leader>e :NERDTreeToggle<cr>
-" }}}
-" expandtab, fold {{{
-autocmd FileType php setlocal omnifunc=phpcd#CompletePHP
+" autocmd
 func! ExpandTab(len)
 	setlocal expandtab
 	execute 'setlocal shiftwidth='.a:len
@@ -29,9 +25,8 @@ func! ExpandTab(len)
 endfunc
 autocmd FileType html,css,scss,javascript call ExpandTab(2)
 autocmd FileType php,python,json,nginx call ExpandTab(4)
-
 autocmd FileType vim setlocal foldmethod=marker
-" }}}
+autocmd FileType php setlocal omnifunc=phpcd#CompletePHP
 " 将光标跳转到上次打开当前文件的位置 {{{
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
 			\ execute "normal! g`\"" |
@@ -82,4 +77,5 @@ endfunction
 command! -nargs=* Ag call s:ag_search(<q-args>)
 command! Agc call s:ag_search(expand('<cword>'))
 " }}}
+"
 " vim: foldmethod=marker:noexpandtab:ts=2:sts=2:sw=2
