@@ -9,6 +9,10 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tomasr/molokai'
+Plug 'Townk/vim-autoclose'
+Plug 'majutsushi/tagbar'
+Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
+Plug 'vim-php/tagbar-phpctags.vim', { 'for': 'php' }
 call plug#end() " }}}
 color molokai
 highlight Normal guibg=#000000 ctermbg=black " 纯黑背景，酷
@@ -21,6 +25,7 @@ nnoremap <silent> <C-p> :FZF<cr>
 nnoremap <silent> <C-u> :FZFMru<cr>
 nnoremap <silent> <leader>e :NERDTreeToggle<cr>
 nnoremap <silent> <leader>f :NERDTreeFind<cr>
+nnoremap <silent> <leader>t :TagbarToggle<cr>
 " autocmd
 func! ExpandTab(len)
 	setlocal expandtab
@@ -32,7 +37,8 @@ autocmd FileType html,css,scss,javascript call ExpandTab(2)
 autocmd FileType php,python,json,nginx call ExpandTab(4)
 autocmd FileType vim setlocal foldmethod=marker
 autocmd FileType php setlocal omnifunc=phpcd#CompletePHP
-let g:ackprg = 'ag --vimgrep'
+autocmd FileType php setlocal iskeyword-=$
+autocmd CompleteDone * pclose " 补全完成后自动关闭预览窗口
 " 将光标跳转到上次打开当前文件的位置 {{{
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
 			\ execute "normal! g`\"" |
@@ -84,6 +90,7 @@ command! -nargs=* FZFAg call s:ag_search(<q-args>)
 command! FZFAg call s:ag_search(expand('<cword>'))
 " }}}
 
+let g:ackprg = 'ag --vimgrep'
 let g:neocomplete#enable_at_startup = 1
 let g:fzf_mru_file_list_size = 100
 
