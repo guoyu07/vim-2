@@ -4,7 +4,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'mileszs/ack.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'Shougo/neocomplete.vim'
-Plug 'phpvim/phpcd.vim'
+Plug 'phpvim/phpcd.vim', { 'for': 'php', 'do':'composer update' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -24,6 +24,7 @@ Plug 'othree/yajs.vim', { 'for': 'javascript' }
 Plug 'gavocanov/vim-js-indent'
 Plug 'mxw/vim-jsx'
 Plug 'tomtom/tcomment_vim'
+Plug 'phpvim/phpfold.vim', { 'for': 'php', 'do':'composer update' }
 call plug#end() " }}}
 color molokai
 highlight Normal guibg=#000000 ctermbg=black " 纯黑背景，酷
