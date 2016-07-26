@@ -36,6 +36,7 @@ set colorcolumn=80
 set autoindent
 set smartindent
 set noswapfile
+set backspace=indent,eol,start
 " map
 nnoremap <silent> <C-p> :FZF<cr>
 nnoremap <silent> <C-u> :FZFMru<cr>
