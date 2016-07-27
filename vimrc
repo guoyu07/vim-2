@@ -1,7 +1,6 @@
 call plug#begin('~/.vim/plugged') " {{{
 Plug 'lvht/fzf-mru'|Plug 'junegunn/fzf'
 Plug 'scrooloose/nerdtree'
-Plug 'mileszs/ack.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'Shougo/neocomplete.vim'
 Plug 'phpvim/phpcd.vim', { 'for': 'php', 'do':'composer update' }
@@ -38,6 +37,9 @@ set autoindent
 set smartindent
 set noswapfile
 set backspace=indent,eol,start
+if executable('ag')
+	set grepprg=ag\ --nogroup\ --nocolor\ --vimgrep
+endif
 " }}}
 " map {{{
 nnoremap <silent> <C-p> :FZF<cr>
@@ -68,6 +70,9 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
 autocmd BufWritePre * if &filetype != 'markdown' |
 			\ :%s/\s\+$//e |
 			\ endif " }}}
+" }}}
+" command {{{
+command -nargs=* -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 " }}}
 " plugin settings {{{
 let g:ackprg = 'ag --vimgrep'
