@@ -1,29 +1,26 @@
 call plug#begin('~/.vim/plugged') " {{{
 Plug 'lvht/fzf-mru'|Plug 'junegunn/fzf'
-Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'|Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'Shougo/neocomplete.vim'
-Plug 'phpvim/phpcd.vim', { 'for': 'php', 'do':'composer update' }
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'tomasr/molokai'
 Plug 'Townk/vim-autoclose'
-Plug 'majutsushi/tagbar'
-Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
-Plug 'vim-php/tagbar-phpctags.vim', { 'for': 'php' }
-Plug 'ap/vim-css-color'
-Plug 'othree/html5.vim'
-Plug 'othree/html5-syntax.vim'
-Plug 'groenewege/vim-less'
-Plug 'ternjs/tern_for_vim'
-Plug 'elzr/vim-json'
-Plug 'pangloss/vim-javascript'
-Plug 'othree/yajs.vim', { 'for': 'javascript' }
-Plug 'gavocanov/vim-js-indent'
-Plug 'mxw/vim-jsx'
 Plug 'tomtom/tcomment_vim'
+Plug 'phpvim/phpcd.vim', { 'for': 'php', 'do':'composer update' }
 Plug 'phpvim/phpfold.vim', { 'for': 'php', 'do':'composer update' }
+Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
+Plug 'vim-php/tagbar-phpctags.vim', { 'for': 'php' }|Plug 'majutsushi/tagbar'
+Plug 'tomasr/molokai'
+Plug 'ap/vim-css-color'
+Plug 'othree/html5.vim', { 'for': 'html' }
+Plug 'othree/html5-syntax.vim', { 'for': 'html' }
+Plug 'groenewege/vim-less'
+Plug 'ternjs/tern_for_vim', { 'for': 'javascript' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'othree/yajs.vim', { 'for': 'javascript' }
+Plug 'gavocanov/vim-js-indent', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx'
 call plug#end() " }}}
 " set {{{
 color molokai
@@ -40,6 +37,7 @@ set backspace=indent,eol,start
 if executable('ag')
 	set grepprg=ag\ --nogroup\ --nocolor\ --vimgrep
 endif
+set pastetoggle=<leader>p
 " }}}
 " map {{{
 nnoremap <silent> <C-p> :FZF<cr>
