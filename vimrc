@@ -12,6 +12,7 @@ Plug 'phpvim/phpfold.vim', { 'for': 'php', 'do':'composer update' }
 Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
 Plug 'vim-php/tagbar-phpctags.vim', { 'for': 'php' }|Plug 'majutsushi/tagbar'
 Plug 'tomasr/molokai'
+Plug 'justinmk/vim-syntax-extra'
 Plug 'ap/vim-css-color'
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'othree/html5-syntax.vim', { 'for': 'html' }
