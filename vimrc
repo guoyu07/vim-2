@@ -7,6 +7,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'Townk/vim-autoclose'
 Plug 'tomtom/tcomment_vim'
+Plug 'justmao945/vim-clang'
 Plug 'phpvim/phpcd.vim', { 'for': 'php', 'do':'composer update' }
 Plug 'phpvim/phpfold.vim', { 'for': 'php', 'do':'composer update' }
 Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
@@ -59,7 +60,7 @@ autocmd FileType php,python,json,nginx call ExpandTab(4)
 autocmd FileType vim setlocal foldmethod=marker
 autocmd FileType php setlocal omnifunc=phpcd#CompletePHP
 autocmd FileType php setlocal iskeyword-=$
-autocmd FileType javascript nnoremap <C-]> :TernDef<cr>
+autocmd FileType javascript nnoremap <buffer> <C-]> :TernDef<cr>
 autocmd CompleteDone * pclose " 补全完成后自动关闭预览窗口
 " 将光标跳转到上次打开当前文件的位置 {{{
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
