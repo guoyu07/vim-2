@@ -37,6 +37,7 @@ set autoindent
 set smartindent
 set noswapfile
 set backspace=indent,eol,start
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 if executable('ag')
 	set grepprg=ag\ --nogroup\ --nocolor\ --vimgrep
 endif
