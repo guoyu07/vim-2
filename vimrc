@@ -2,6 +2,8 @@ call plug#begin('~/.vim/plugged') " {{{
 Plug 'lvht/fzf-mru'|Plug 'junegunn/fzf'
 Plug 'Xuyuanp/nerdtree-git-plugin'|Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'solarnz/thrift.vim'
 Plug 'Shougo/neocomplete.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -38,6 +40,10 @@ set smartindent
 set noswapfile
 set backspace=indent,eol,start
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set emoji
+set t_8f=[38;2;%lu;%lu;%lum
+set t_8b=[48;2;%lu;%lu;%lum
+set termguicolors
 if executable('ag')
 	set grepprg=ag\ --nogroup\ --nocolor\ --vimgrep
 endif
